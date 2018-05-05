@@ -12,15 +12,23 @@ def parseMicrosoft():
         return newArray
 
 def calcHistorical(datapoints, investment):
+
     unsortedRS = parseMicrosoft()
+    print "Unsorted Return Series: {}".format(unsortedRS)
+
     unsortedRS = unsortedRS[0:datapoints]
+    print "Unsorted selected RS: {}".format(unsortedRS)
+
     sortRS = sorted(unsortedRS)
-    print((sortRS))
-    totalCount = len(sortRS) #find out if we need to do -1 here.
+    print "Sorted Return Series: {}".format(sortRS)
+
+    totalCount = len(sortRS)-1 #find out if we need to do -1 here.
     print "The total number of datapoints counts: {}".format(totalCount)
+
     his95Position = (int(round(0.05 * totalCount)))
     print "The 95th position: {}".format(his95Position)
-    his95Value = sortRS[his95Position]
+
+    his95Value = sortRS[his95Position] * investment
     print "The 95th position value: {}".format(his95Value)
 
 
