@@ -1,6 +1,7 @@
 # Sagar Gurung, MSc Cloud Computing, University of Surrey
 
 import csv
+import numpy
 
 def parseMicrosoft():
     with open('microsoft-DataAnalysis.csv', 'r') as csvfile:
@@ -11,7 +12,7 @@ def parseMicrosoft():
             newArray.append(row[7])
         return newArray
 
-def calcHistorical(datapoints, investment):
+def calcVar(datapoints, investment):
 
     unsortedRS = parseMicrosoft()
     print "Unsorted Return Series: {}".format(unsortedRS)
@@ -36,44 +37,33 @@ def calcHistorical(datapoints, investment):
     print "The 95th position: {}".format(his95Position)
 
     his95Value = sortRS[his95Position] * investment
-    print "The 95th position value: {}".format(his95Value)
+    print "Historical VaR at 95%: {}".format(his95Value)
 
     his99Position = (int(round(0.01 * totalCount)))
     print "The 99th position: {}".format(his99Position)
 
     his99Value = sortRS[his99Position] * investment
-    print "The 99th position value: {}".format(his99Value)
+    print "Historical VaR at 99%: {}".format(his99Value)
 
 
-calcHistorical(8044,1)
+    #Covariance
+    totalSum = sum(sortRS)
+    print "Total sum of given data points: {}".format(totalSum)
+    mean = totalSum/totalCount
+    print "Mean: {}".format(mean)
+
+    standardDeviation = numpy.std(sortRS)
+    print "Standard Deviation: {}".format(standardDeviation)
+
+    cov95VaR = -(mean+(1.65*standardDeviation))*investment
+    print "Covariance VaR at 95%: {}".format(cov95VaR)
+
+    cov99VaR = -(mean + (2.33 * standardDeviation)) * investment
+    print "Covariance VaR at 99%: {}".format(cov99VaR)
 
 
+calcVar(8044,1)
 
-
-
-
-
-
-
-
-# dataPoints = input('Please enter last number of days')
-# investment = input('Please enter the investment')
-
-#
-# newArray = []
-# def calHistorical():
-#     with open('microsoft-DataAnalysis.csv', 'r') as csvfile:
-#         readCSV = csv.reader(csvfile)
-#         header = next(readCSV)
-#         for row in readCSV:
-#             rs = float(row[7])
-#             newArray.append(rs)
-#             return newArray
-#             # print (newArray)
-# sort_returnSeries = sorted(newArray)
-# print (sort_returnSeries)
-#
-# calHistorical()
 
 
 
