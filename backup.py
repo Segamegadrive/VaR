@@ -3,6 +3,7 @@
 import csv
 import numpy
 
+
 def parseMicrosoft():
     with open('microsoft-DataAnalysis.csv', 'r') as csvfile:
         newArray = []
@@ -12,9 +13,9 @@ def parseMicrosoft():
             newArray.append(row[7])
         return newArray
 
-def calcVar(funcCompanies, datapoints, investment):
 
-    unsortedRS = funcCompanies
+def calcVar(datapoints, investment):
+    unsortedRS = parseMicrosoft()
     print "Unsorted Return Series: {}".format(unsortedRS)
 
     unsortedRS = unsortedRS[0:datapoints]
@@ -24,13 +25,13 @@ def calcVar(funcCompanies, datapoints, investment):
     # Therefore, the datapoints value shouldn't exceed more than 8044
     for i in range(1, datapoints, datapoints):
         floatURS = [float(i) for i in unsortedRS]
-        print "Converted to float: {}" .format(floatURS)
+        print "Converted to float: {}".format(floatURS)
 
     # Sorting the selected datapoints values
     sortRS = sorted(floatURS)
     print "Sorted Return Series: {}".format(sortRS)
 
-    totalCount = len(sortRS)   #find out if we need to do -1 here.
+    totalCount = len(sortRS)  # find out if we need to do -1 here.
     print "The total number of datapoints counts: {}".format(totalCount)
 
     his95Position = (int(round(0.05 * totalCount)))
@@ -45,24 +46,23 @@ def calcVar(funcCompanies, datapoints, investment):
     his99Value = sortRS[his99Position] * investment
     print "Historical VaR at 99%: {}".format(his99Value)
 
-
-    #Covariance
+    # Covariance
     totalSum = sum(sortRS)
     print "Total sum of given data points: {}".format(totalSum)
-    mean = totalSum/totalCount
+    mean = totalSum / totalCount
     print "Mean: {}".format(mean)
 
     standardDeviation = numpy.std(sortRS)
     print "Standard Deviation: {}".format(standardDeviation)
 
-    cov95VaR = -(mean+(1.65*standardDeviation))*investment
+    cov95VaR = -(mean + (1.65 * standardDeviation)) * investment
     print "Covariance VaR at 95%: {}".format(cov95VaR)
 
     cov99VaR = -(mean + (2.33 * standardDeviation)) * investment
     print "Covariance VaR at 99%: {}".format(cov99VaR)
 
 
-calcVar(parseMicrosoft(),8044,1)
+calcVar(8044, 1)
 
 
 
