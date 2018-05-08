@@ -12,6 +12,15 @@ def parseMicrosoft():
             newArray.append(row[7])
         return newArray
 
+def parseAmazon():
+    with open('amazon-DataAnalysis.csv', 'r') as csvfile:
+        newArray = []
+        readCSV = csv.reader(csvfile)
+        header = next(readCSV)
+        for row in readCSV:
+            newArray.append(row[7])
+        return newArray
+
 def calcVar(funcCompanies, datapoints, investment):
 
     unsortedRS = funcCompanies
@@ -62,7 +71,7 @@ def calcVar(funcCompanies, datapoints, investment):
     print "Covariance VaR at 99%: {}".format(cov99VaR)
 
 
-calcVar(parseMicrosoft(),8044,1)
+calcVar(parseAmazon(),5218,1)
 
 
 
