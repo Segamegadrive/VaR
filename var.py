@@ -71,7 +71,7 @@ def calcVar(funcCompanies, datapoints, investment):
     print "Covariance VaR at 99%: {}".format(cov99VaR)
 
 
-calcVar(parseAmazon(),5218,1)
+calcVar(parseAmazon(),10,1)
 
 
 
