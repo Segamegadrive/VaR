@@ -40,15 +40,15 @@ def parseAmazonAdjClose():
             newArray.append(row[5])
         return newArray
 
-def drawTimeReturnSeries():
-    with open('microsoft-DataAnalysis.csv', 'r') as csvfile:
-        newArray = []
-        readCSV = csv.reader(csvfile)
-        header = next(readCSV)
-        for row in readCSV:
-            newArray.append(row[5])
-            floatSeries = [float(row) for row in newArray ]
-        return floatSeries
+# def drawTimeReturnSeries():
+#     with open('microsoft-DataAnalysis.csv', 'r') as csvfile:
+#         newArray = []
+#         readCSV = csv.reader(csvfile)
+#         header = next(readCSV)
+#         for row in readCSV:
+#             newArray.append(row[5])
+#             floatSeries = [float(row) for row in newArray ]
+#         return floatSeries
 
 def calcVar(funcCompanies, datapoints, investment):
 
@@ -121,23 +121,35 @@ def calcMonte(funcCompanies, adjClose, datapoints, investment):
     adjCloseFirstVal = adjCloseValFloat[0]
     print "First latest value in Adj Close Column: {} ".format(adjCloseFirstVal)
 
-    randomNum = random.gauss(mean, standardDeviation)
-    print "Random Num: {}".format(randomNum)
-
     numOfDataPoints = datapoints
-    for a in range(0, numOfDataPoints):
-        print(a)
+    for r in range(1, numOfDataPoints+1):
+        randomArray = []
+        randomNum = random.gauss(mean, standardDeviation) * r
+        randomArray.append(randomNum)
+        for row in randomArray:
+            newAdjClosePrice = ((1 + row) * adjCloseFirstVal)
+            print(newAdjClosePrice)
 
-    newAdjClosePrice = (1+randomNum)*adjCloseFirstVal
-    print(newAdjClosePrice)
 
+
+            # print (row)
+            # floatRandomArray = [float(row) for r in randomArray]
+            # print type(floatRandomArray)
+
+
+
+        # for b in range(1, randomArray):
+        #     print (b)
+            # newAdjClosePrice = ((1 + b) * adjCloseFirstVal)
+            # print(newAdjClosePrice)
+            # print(randomArray)
 
 
 
 
 # calcVar(parseMicrosoft(),8044,1)
 
-calcMonte(parseMicrosoft(), parseMicrosoftAdjClose(), 8044, 1)
+calcMonte(parseMicrosoft(), parseMicrosoftAdjClose(), 10, 1)
 
 
 
