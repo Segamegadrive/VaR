@@ -125,7 +125,9 @@ def calcMonte(funcCompanies, adjClose, datapoints, investment):
     print "Random Num: {}".format(randomNum)
 
     numOfDataPoints = datapoints
-    
+    for a in range(0, numOfDataPoints):
+        print(a)
+
     newAdjClosePrice = (1+randomNum)*adjCloseFirstVal
     print(newAdjClosePrice)
 
@@ -135,7 +137,7 @@ def calcMonte(funcCompanies, adjClose, datapoints, investment):
 
 # calcVar(parseMicrosoft(),8044,1)
 
-calcMonte(parseAmazon(), parseAmazonAdjClose(), 5128, 1)
+calcMonte(parseMicrosoft(), parseMicrosoftAdjClose(), 8044, 1)
 
 
 
