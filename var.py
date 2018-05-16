@@ -105,51 +105,65 @@ def calcMonte(funcCompanies, adjClose, datapoints, investment):
     unsortedRS = unsortedRS[0:datapoints]
     for i in range(1, datapoints, datapoints):
         floatURS = [float(i) for i in unsortedRS]
-    sortRS = sorted(floatURS)
-    totalCount = len(sortRS)
-    totalSum = sum(sortRS)
+        sortRS = sorted(floatURS)
+        totalCount = len(sortRS)
+        totalSum = sum(sortRS)
 
-    mean = totalSum / totalCount
-    print "new mean: {}".format(mean)
-    standardDeviation = numpy.std(sortRS)
-    print "new standard deviation: {}".format(standardDeviation)
+        mean = totalSum / totalCount
+        print "new mean: {}".format(mean)
+        standardDeviation = numpy.std(sortRS)
+        print "new standard deviation: {}".format(standardDeviation)
 
     adjCloseVal = adjClose
     for i in range(1, datapoints, datapoints):
         adjCloseValFloat = [float(i) for i in adjCloseVal]
+        adjCloseFirstVal = adjCloseValFloat[0]
+        print "First old value in Adj Close Column: {} ".format(adjCloseFirstVal)
 
-    adjCloseFirstVal = adjCloseValFloat[0]
-    print "First latest value in Adj Close Column: {} ".format(adjCloseFirstVal)
 
     numOfDataPoints = datapoints
     for r in range(1, numOfDataPoints+1):
         randomArray = []
         randomNum = random.gauss(mean, standardDeviation) * r
         randomArray.append(randomNum)
-        for row in randomArray:
-            newAdjClosePrice = ((1 + row) * adjCloseFirstVal)
-            print(newAdjClosePrice)
+        print(randomArray)
+
+    newAdjCloseValues = []
+    firstNewAdjClosePrice = (1 + randomArray[0])*adjCloseFirstVal
+    newAdjCloseValues.append(firstNewAdjClosePrice)
+    print(newAdjCloseValues)
+
+    for i in range(1, numOfDataPoints):
+        newAdjCloseValuesList = (1 + randomArray[i])*newAdjCloseValues[i+1]
+        print(newAdjCloseValuesList)
 
 
 
-            # print (row)
-            # floatRandomArray = [float(row) for r in randomArray]
-            # print type(floatRandomArray)
 
 
+        # print "List of random numbers: {}".format(randomArray)
+        # for row in randomArray:
+        #     newAdjClosePriceList = []
+        #     newAdjClosePrice = ((1 + row) * adjCloseFirstVal)
+        #     newAdjClosePriceList.append(newAdjClosePrice)
+            # print (newAdjClosePriceList)
 
-        # for b in range(1, randomArray):
-        #     print (b)
-            # newAdjClosePrice = ((1 + b) * adjCloseFirstVal)
-            # print(newAdjClosePrice)
-            # print(randomArray)
+            # newAdjClosePriceArray = numpy.asarray(newAdjClosePriceList)
+            # print (newAdjClosePriceArray)
+
+            # print "New Adj Close Price: {}".format(newAdjClosePriceArray)
+
+            # newReturnSeries = (newAdjClosePriceArray[0] - newAdjClosePriceArray[1])/newAdjClosePriceArray[1]
+            # print(newReturnSeries)
+
+
 
 
 
 
 # calcVar(parseMicrosoft(),8044,1)
 
-calcMonte(parseMicrosoft(), parseMicrosoftAdjClose(), 10, 1)
+calcMonte(parseMicrosoft(), parseMicrosoftAdjClose(), 20, 1)
 
 
 
