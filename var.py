@@ -2,6 +2,7 @@
 
 import csv
 import numpy
+import random
 
 def parseMicrosoft():
     with open('microsoft-DataAnalysis.csv', 'r') as csvfile:
@@ -12,6 +13,15 @@ def parseMicrosoft():
             newArray.append(row[7])
         return newArray
 
+def parseMicrosoftAdjClose():
+    with open('microsoft-DataAnalysis.csv', 'r') as csvfile:
+        newArray = []
+        readCSV = csv.reader(csvfile)
+        header = next(readCSV)
+        for row in readCSV:
+            newArray.append(row[5])
+        return newArray
+
 def parseAmazon():
     with open('amazon-DataAnalysis.csv', 'r') as csvfile:
         newArray = []
@@ -20,6 +30,25 @@ def parseAmazon():
         for row in readCSV:
             newArray.append(row[7])
         return newArray
+
+def parseAmazonAdjClose():
+    with open('amazon-DataAnalysis.csv', 'r') as csvfile:
+        newArray = []
+        readCSV = csv.reader(csvfile)
+        header = next(readCSV)
+        for row in readCSV:
+            newArray.append(row[5])
+        return newArray
+
+def drawTimeReturnSeries():
+    with open('microsoft-DataAnalysis.csv', 'r') as csvfile:
+        newArray = []
+        readCSV = csv.reader(csvfile)
+        header = next(readCSV)
+        for row in readCSV:
+            newArray.append(row[5])
+            floatSeries = [float(row) for row in newArray ]
+        return floatSeries
 
 def calcVar(funcCompanies, datapoints, investment):
 
@@ -71,7 +100,42 @@ def calcVar(funcCompanies, datapoints, investment):
     print "Covariance VaR at 99%: {}".format(cov99VaR)
 
 
-calcVar(parseAmazon(),10,1)
+def calcMonte(funcCompanies, adjClose, datapoints, investment):
+    unsortedRS = funcCompanies
+    unsortedRS = unsortedRS[0:datapoints]
+    for i in range(1, datapoints, datapoints):
+        floatURS = [float(i) for i in unsortedRS]
+    sortRS = sorted(floatURS)
+    totalCount = len(sortRS)
+    totalSum = sum(sortRS)
+
+    mean = totalSum / totalCount
+    print "new mean: {}".format(mean)
+    standardDeviation = numpy.std(sortRS)
+    print "new standard deviation: {}".format(standardDeviation)
+
+    adjCloseVal = adjClose
+    for i in range(1, datapoints, datapoints):
+        adjCloseValFloat = [float(i) for i in adjCloseVal]
+
+    adjCloseFirstVal = adjCloseValFloat[0]
+    print "First latest value in Adj Close Column: {} ".format(adjCloseFirstVal)
+
+    randomNum = random.gauss(mean, standardDeviation)
+    print "Random Num: {}".format(randomNum)
+
+    numOfDataPoints = datapoints
+    
+    newAdjClosePrice = (1+randomNum)*adjCloseFirstVal
+    print(newAdjClosePrice)
+
+
+
+
+
+# calcVar(parseMicrosoft(),8044,1)
+
+calcMonte(parseAmazon(), parseAmazonAdjClose(), 5128, 1)
 
 
 
