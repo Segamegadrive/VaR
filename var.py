@@ -121,21 +121,29 @@ def calcMonte(funcCompanies, adjClose, datapoints, investment):
         print "First old value in Adj Close Column: {} ".format(adjCloseFirstVal)
 
 
-    numOfDataPoints = datapoints
-    for r in range(1, numOfDataPoints+1):
-        randomArray = []
+    # numOfDataPoints = datapoints
+
+    randomArray = []
+    for r in range(1, datapoints+1):
         randomNum = random.gauss(mean, standardDeviation) * r
         randomArray.append(randomNum)
-        print(randomArray)
+        # print(randomArray)
 
     newAdjCloseValues = []
-    firstNewAdjClosePrice = (1 + randomArray[0])*adjCloseFirstVal
-    newAdjCloseValues.append(firstNewAdjClosePrice)
-    print(newAdjCloseValues)
+    for a in range(datapoints):
+        NewAdjClosePrice = (1 + randomArray[a])*adjCloseFirstVal
+        newAdjCloseValues.append(NewAdjClosePrice)
+        print(newAdjCloseValues)
 
-    for i in range(1, numOfDataPoints):
-        newAdjCloseValuesList = (1 + randomArray[i])*newAdjCloseValues[i+1]
-        print(newAdjCloseValuesList)
+    # for a in range(datapoints):
+    #     newAdjCloseList = (newAdjCloseValues[a] - newAdjCloseValues[a-1])/newAdjCloseValues[a]
+    #     print(newAdjCloseList)
+
+    # print(newAdjCloseValues)
+
+    # for i in range(1, numOfDataPoints):
+    #     newAdjCloseValuesList = (1 + randomArray[i])*newAdjCloseValues[i+1]
+    #     print(newAdjCloseValuesList)
 
 
 
@@ -163,7 +171,7 @@ def calcMonte(funcCompanies, adjClose, datapoints, investment):
 
 # calcVar(parseMicrosoft(),8044,1)
 
-calcMonte(parseMicrosoft(), parseMicrosoftAdjClose(), 20, 1)
+calcMonte(parseMicrosoft(), parseMicrosoftAdjClose(), 5, 1)
 
 
 
