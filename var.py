@@ -127,7 +127,7 @@ def calcMonte(funcCompanies, adjClose, datapoints, investment):
     for r in range(1, datapoints+1):
         randomNum = random.gauss(mean, standardDeviation) * r
         randomArray.append(randomNum)
-    print(randomArray)
+    # print(randomArray)
 
 
     newAdjCloseValues = []
@@ -139,43 +139,37 @@ def calcMonte(funcCompanies, adjClose, datapoints, investment):
         newAdjCloseValues.append(newPrice)
     print(newAdjCloseValues)
 
-    # for a in range(datapoints):
-    #     newAdjCloseList = (newAdjCloseValues[a] - newAdjCloseValues[a-1])/newAdjCloseValues[a]
-    #     print(newAdjCloseList)
 
-    # print(newAdjCloseValues)
-
-    # for i in range(1, numOfDataPoints):
-    #     newAdjCloseValuesList = (1 + randomArray[i])*newAdjCloseValues[i+1]
-    #     print(newAdjCloseValuesList)
+    newReturnSeries = []
+    for b in range(0, datapoints):
+        newRSeries = (newAdjCloseValues[b] - newAdjCloseValues[b-1])/newAdjCloseValues[b]
+        newReturnSeries.append(newRSeries)
+    print(newReturnSeries)
 
 
+    sortNewRS = sorted(newReturnSeries)
+    print(sortNewRS)
 
+    totalCountNewRS = len(sortNewRS)
+    print(totalCountNewRS)
 
+    monte95Position = (int(round(0.05 * totalCountNewRS)))
+    print(monte95Position)
 
-        # print "List of random numbers: {}".format(randomArray)
-        # for row in randomArray:
-        #     newAdjClosePriceList = []
-        #     newAdjClosePrice = ((1 + row) * adjCloseFirstVal)
-        #     newAdjClosePriceList.append(newAdjClosePrice)
-            # print (newAdjClosePriceList)
+    monte99Position = (int(round(0.01 * totalCountNewRS)))
+    print(monte99Position)
 
-            # newAdjClosePriceArray = numpy.asarray(newAdjClosePriceList)
-            # print (newAdjClosePriceArray)
-
-            # print "New Adj Close Price: {}".format(newAdjClosePriceArray)
-
-            # newReturnSeries = (newAdjClosePriceArray[0] - newAdjClosePriceArray[1])/newAdjClosePriceArray[1]
-            # print(newReturnSeries)
-
-
+    monte95Value = sortRS[monte95Position] * investment
+    monte99Value = sortRS[monte99Position] * investment
+    print(monte95Value)
+    print(monte99Value)
 
 
 
 
 # calcVar(parseMicrosoft(),8044,1)
 
-calcMonte(parseMicrosoft(), parseMicrosoftAdjClose(), 5, 1)
+calcMonte(parseMicrosoft(), parseMicrosoftAdjClose(), 10, 1)
 
 
 
