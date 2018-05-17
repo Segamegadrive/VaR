@@ -127,13 +127,17 @@ def calcMonte(funcCompanies, adjClose, datapoints, investment):
     for r in range(1, datapoints+1):
         randomNum = random.gauss(mean, standardDeviation) * r
         randomArray.append(randomNum)
-        # print(randomArray)
+    print(randomArray)
+
 
     newAdjCloseValues = []
-    for a in range(datapoints):
-        NewAdjClosePrice = (1 + randomArray[a])*adjCloseFirstVal
-        newAdjCloseValues.append(NewAdjClosePrice)
-        print(newAdjCloseValues)
+    firstVal = (1+randomArray[0])*adjCloseFirstVal
+    newAdjCloseValues.append(firstVal)
+
+    for a in range(1, datapoints):
+        newPrice = (1 + randomArray[a])*newAdjCloseValues[a-1]
+        newAdjCloseValues.append(newPrice)
+    print(newAdjCloseValues)
 
     # for a in range(datapoints):
     #     newAdjCloseList = (newAdjCloseValues[a] - newAdjCloseValues[a-1])/newAdjCloseValues[a]
