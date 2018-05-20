@@ -13,6 +13,7 @@ def parseMicrosoft():
             newArray.append(row[7])
         return newArray
 
+
 def parseMicrosoftAdjClose():
     with open('microsoft-DataAnalysis.csv', 'r') as csvfile:
         newArray = []
@@ -20,7 +21,11 @@ def parseMicrosoftAdjClose():
         header = next(readCSV)
         for row in readCSV:
             newArray.append(row[5])
+            # firstVal = newArray[0:1]
         return newArray
+
+
+
 
 def parseAmazon():
     with open('amazon-DataAnalysis.csv', 'r') as csvfile:
@@ -39,6 +44,25 @@ def parseAmazonAdjClose():
         for row in readCSV:
             newArray.append(row[5])
         return newArray
+
+def parseBitcoin():
+    with open('bitcoin-DataAnalysis.csv', 'r') as csvfile:
+        newArray = []
+        readCSV = csv.reader(csvfile)
+        header = next(readCSV)
+        for row in readCSV:
+            newArray.append(row[7])
+        return newArray
+
+def parseBitcoinAdjClose():
+    with open('bitcoin-DataAnalysis.csv', 'r') as csvfile:
+        newArray = []
+        readCSV = csv.reader(csvfile)
+        header = next(readCSV)
+        for row in readCSV:
+            newArray.append(row[5])
+        return newArray
+
 
 # def drawTimeReturnSeries():
 #     with open('microsoft-DataAnalysis.csv', 'r') as csvfile:
@@ -99,59 +123,53 @@ def calcVar(funcCompanies, datapoints, investment):
     cov99VaR = -(mean + (2.33 * standardDeviation)) * investment
     print "Covariance VaR at 99%: {}".format(cov99VaR)
 
+#     Monte Carlo
 
-def calcMonte(funcCompanies, adjClose, datapoints, investment):
-    unsortedRS = funcCompanies
-    unsortedRS = unsortedRS[0:datapoints]
-    for i in range(1, datapoints, datapoints):
-        floatURS = [float(i) for i in unsortedRS]
-        sortRS = sorted(floatURS)
-        totalCount = len(sortRS)
-        totalSum = sum(sortRS)
-
-        mean = totalSum / totalCount
-        print "new mean: {}".format(mean)
-        standardDeviation = numpy.std(sortRS)
-        print "new standard deviation: {}".format(standardDeviation)
-
-    adjCloseVal = adjClose
-    for i in range(1, datapoints, datapoints):
-        adjCloseValFloat = [float(i) for i in adjCloseVal]
-        adjCloseFirstVal = adjCloseValFloat[0]
+    if (funcCompanies == parseMicrosoft()):
+        firstVal = parseMicrosoftAdjClose()
+        for i in range(1, datapoints):
+            firstVal = [float(i) for i in firstVal]
+            adjCloseFirstVal = firstVal[0]
         print "First old value in Adj Close Column: {} ".format(adjCloseFirstVal)
 
+    if (funcCompanies == parseAmazon()):
+        firstVal = parseAmazonAdjClose()
+        for i in range(1, datapoints):
+            firstVal = [float(i) for i in firstVal]
+            adjCloseFirstVal = firstVal[0]
+        print "First old value in Adj Close Column: {} ".format(adjCloseFirstVal)
 
-    # numOfDataPoints = datapoints
+    if (funcCompanies == parseBitcoin()):
+        firstVal = parseBitcoinAdjClose()
+        for i in range(1, datapoints):
+            firstVal = [float(i) for i in firstVal]
+            adjCloseFirstVal = firstVal[0]
+        print "First old value in Adj Close Column: {} ".format(adjCloseFirstVal)
 
     randomArray = []
-    for r in range(1, datapoints+1):
+    for r in range(1, datapoints + 1):
         randomNum = random.gauss(mean, standardDeviation) * r
         randomArray.append(randomNum)
     # print(randomArray)
 
-
     newAdjCloseValues = []
-    firstVal = (1+randomArray[0])*adjCloseFirstVal
+    firstVal = (1 + randomArray[0]) * adjCloseFirstVal
     newAdjCloseValues.append(firstVal)
 
     for a in range(1, datapoints):
-        newPrice = (1 + randomArray[a])*newAdjCloseValues[a-1]
+        newPrice = (1 + randomArray[a]) * newAdjCloseValues[a - 1]
         newAdjCloseValues.append(newPrice)
-    print(newAdjCloseValues)
-
+    print "New adj close value: {}".format(newAdjCloseValues)
 
     newReturnSeries = []
-    for b in range(0, datapoints):
-        newRSeries = (newAdjCloseValues[b] - newAdjCloseValues[b-1])/newAdjCloseValues[b]
+    for b in range(1, datapoints):
+        newRSeries = (newAdjCloseValues[b] - newAdjCloseValues[b - 1]) / newAdjCloseValues[b]
         newReturnSeries.append(newRSeries)
-    print(newReturnSeries)
-
+    print "New return series: {}".format(newReturnSeries)
 
     sortNewRS = sorted(newReturnSeries)
-    print(sortNewRS)
-
+    print"sorted rs {}".format(sortNewRS)
     totalCountNewRS = len(sortNewRS)
-    print(totalCountNewRS)
 
     monte95Position = (int(round(0.05 * totalCountNewRS)))
     print(monte95Position)
@@ -159,17 +177,98 @@ def calcMonte(funcCompanies, adjClose, datapoints, investment):
     monte99Position = (int(round(0.01 * totalCountNewRS)))
     print(monte99Position)
 
-    monte95Value = sortRS[monte95Position] * investment
-    monte99Value = sortRS[monte99Position] * investment
+    monte95Value = sortNewRS[monte95Position] * investment
+    monte99Value = sortNewRS[monte99Position] * investment
     print(monte95Value)
     print(monte99Value)
 
 
 
 
-# calcVar(parseMicrosoft(),8044,1)
 
-calcMonte(parseMicrosoft(), parseMicrosoftAdjClose(), 10, 1)
+
+
+
+
+
+
+
+
+
+
+
+# def calcMonte(funcCompanies, adjClose, datapoints, investment):
+#     unsortedRS = funcCompanies
+#     unsortedRS = unsortedRS[0:datapoints]
+#     for i in range(1, datapoints, datapoints):
+#         floatURS = [float(i) for i in unsortedRS]
+#         sortRS = sorted(floatURS)
+#         totalCount = len(sortRS)
+#         totalSum = sum(sortRS)
+#
+#         mean = totalSum / totalCount
+#         print "new mean: {}".format(mean)
+#         standardDeviation = numpy.std(sortRS)
+#         print "new standard deviation: {}".format(standardDeviation)
+#
+#
+#     adjCloseVal = adjClose
+#     for i in range(1, datapoints, datapoints):
+#         adjCloseValFloat = [float(i) for i in adjCloseVal]
+#         adjCloseFirstVal = adjCloseValFloat[0]
+#         print "First old value in Adj Close Column: {} ".format(adjCloseFirstVal)
+
+
+    # numOfDataPoints = datapoints
+
+    # randomArray = []
+    # for r in range(1, datapoints+1):
+    #     randomNum = random.gauss(mean, standardDeviation) * r
+    #     randomArray.append(randomNum)
+    # print(randomArray)
+
+
+    # newAdjCloseValues = []
+    # firstVal = (1+randomArray[0])*adjCloseFirstVal
+    # newAdjCloseValues.append(firstVal)
+    #
+    # for a in range(1, datapoints):
+    #     newPrice = (1 + randomArray[a])*newAdjCloseValues[a-1]
+    #     newAdjCloseValues.append(newPrice)
+    # print(newAdjCloseValues)
+
+
+    # newReturnSeries = []
+    # for b in range(0, datapoints):
+    #     newRSeries = (newAdjCloseValues[b] - newAdjCloseValues[b-1])/newAdjCloseValues[b]
+    #     newReturnSeries.append(newRSeries)
+    # print(newReturnSeries)
+    #
+    #
+    # sortNewRS = sorted(newReturnSeries)
+    # print(sortNewRS)
+    #
+    # totalCountNewRS = len(sortNewRS)
+    # print(totalCountNewRS)
+    #
+    # monte95Position = (int(round(0.05 * totalCountNewRS)))
+    # print(monte95Position)
+    #
+    # monte99Position = (int(round(0.01 * totalCountNewRS)))
+    # print(monte99Position)
+    #
+    # monte95Value = sortRS[monte95Position] * investment
+    # monte99Value = sortRS[monte99Position] * investment
+    # print(monte95Value)
+    # print(monte99Value)
+
+
+
+
+calcVar(parseBitcoin(),20,1)
+
+# calcMonte(parseMicrosoft(), parseMicrosoftAdjClose(), 10, 1)
+# parseAmazonAdjClose()
 
 
 

@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f05520cb-479a-4b7f-bb8c-24449bfb3030" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/amazon-DataAnalysis.csv" beforeDir="false" afterPath="$PROJECT_DIR$/amazon-DataAnalysis.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var.py" beforeDir="false" afterPath="$PROJECT_DIR$/var.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,32 +17,23 @@
       <file leaf-file-name="var.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/var.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="353">
-              <caret line="171" column="56" selection-start-line="171" selection-start-column="56" selection-end-line="171" selection-end-column="56" />
+            <state relative-caret-position="127">
+              <caret line="137" column="51" lean-forward="true" selection-start-line="137" selection-start-column="51" selection-end-line="137" selection-end-column="51" />
               <folding>
                 <element signature="e#59#69#0" expanded="true" />
-                <marker date="1526573562000" expanded="true" signature="4190:4605" ph="..." />
+                <marker date="1526845658000" expanded="true" signature="6973:7411" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test.py">
+      <file leaf-file-name="test2.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="32" column="31" selection-start-line="32" selection-start-column="31" selection-end-line="32" selection-end-column="31" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="backup.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/backup.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="585">
-              <caret line="40" column="56" selection-start-line="40" selection-start-column="56" selection-end-line="40" selection-end-column="56" />
+            <state relative-caret-position="257">
+              <caret line="79" column="78" selection-start-line="79" selection-start-column="78" selection-end-line="79" selection-end-column="78" />
               <folding>
-                <element signature="e#59#69#0" expanded="true" />
+                <element signature="e#0#10#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -71,6 +63,7 @@
         <option value="$PROJECT_DIR$/GAE/templates/index.html" />
         <option value="$PROJECT_DIR$/GAE/templates/_base.html" />
         <option value="$PROJECT_DIR$/test1.py" />
+        <option value="$PROJECT_DIR$/test2.py" />
         <option value="$PROJECT_DIR$/var.py" />
       </list>
     </option>
@@ -152,6 +145,24 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
+    <configuration name="test2" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="VaR" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test2.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
     <configuration name="var" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="VaR" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -174,10 +185,12 @@
       <item itemvalue="Python.var" />
       <item itemvalue="Python.backup" />
       <item itemvalue="Python.test1" />
+      <item itemvalue="Python.test2" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.var" />
+        <item itemvalue="Python.test2" />
         <item itemvalue="Python.test1" />
         <item itemvalue="Python.backup" />
       </list>
@@ -200,13 +213,13 @@
     <frame x="0" y="23" width="1280" height="773" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49590164" visible="true" weight="0.2112788" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4967742" visible="true" weight="0.2112788" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.2781065" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.31213018" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.32988167" />
-      <window_info id="Structure" order="1" sideWeight="0.50409836" side_tool="true" visible="true" weight="0.2112788" />
+      <window_info id="Structure" order="1" sideWeight="0.5032258" side_tool="true" visible="true" weight="0.2112788" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32840237" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39792898" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -231,7 +244,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="1" />
+      <option name="time" value="2" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -241,7 +254,7 @@
           <caret line="73" column="29" selection-start-line="73" selection-start-column="29" selection-end-line="73" selection-end-column="29" />
           <folding>
             <element signature="e#59#69#0" expanded="true" />
-            <marker date="1526573562000" expanded="true" signature="4190:4605" ph="..." />
+            <marker date="1526845658000" expanded="true" signature="6973:7411" ph="..." />
           </folding>
         </state>
       </provider>
@@ -269,7 +282,7 @@
           <caret line="73" column="24" selection-start-line="73" selection-start-column="24" selection-end-line="73" selection-end-column="24" />
           <folding>
             <element signature="e#59#69#0" expanded="true" />
-            <marker date="1526573562000" expanded="true" signature="4190:4605" ph="..." />
+            <marker date="1526845658000" expanded="true" signature="6973:7411" ph="..." />
           </folding>
         </state>
       </provider>
@@ -298,7 +311,7 @@
           <caret line="64" column="12" selection-start-line="64" selection-start-column="12" selection-end-line="64" selection-end-column="12" />
           <folding>
             <element signature="e#59#69#0" expanded="true" />
-            <marker date="1526573562000" expanded="true" signature="4190:4605" ph="..." />
+            <marker date="1526845658000" expanded="true" signature="6973:7411" ph="..." />
           </folding>
         </state>
       </provider>
@@ -316,7 +329,7 @@
           <caret line="57" column="41" selection-start-line="57" selection-start-column="41" selection-end-line="57" selection-end-column="41" />
           <folding>
             <element signature="e#59#69#0" expanded="true" />
-            <marker date="1526573562000" expanded="true" signature="4190:4605" ph="..." />
+            <marker date="1526845658000" expanded="true" signature="6973:7411" ph="..." />
           </folding>
         </state>
       </provider>
@@ -334,7 +347,7 @@
           <caret line="57" column="41" selection-start-line="57" selection-start-column="41" selection-end-line="57" selection-end-column="41" />
           <folding>
             <element signature="e#59#69#0" expanded="true" />
-            <marker date="1526573562000" expanded="true" signature="4190:4605" ph="..." />
+            <marker date="1526845658000" expanded="true" signature="6973:7411" ph="..." />
           </folding>
         </state>
       </provider>
@@ -352,7 +365,7 @@
           <caret line="57" column="41" selection-start-line="57" selection-start-column="41" selection-end-line="57" selection-end-column="41" />
           <folding>
             <element signature="e#59#69#0" expanded="true" />
-            <marker date="1526573562000" expanded="true" signature="4190:4605" ph="..." />
+            <marker date="1526845658000" expanded="true" signature="6973:7411" ph="..." />
           </folding>
         </state>
       </provider>
@@ -387,13 +400,23 @@
     <entry file="file://$PROJECT_DIR$/GAE/templates/_base.html" />
     <entry file="file://$PROJECT_DIR$/GAE/templates/index.html" />
     <entry file="file://$PROJECT_DIR$/test1.py" />
+    <entry file="file://$PROJECT_DIR$/test2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="79" column="78" selection-start-line="79" selection-start-column="78" selection-end-line="79" selection-end-column="78" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/var.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="353">
-          <caret line="171" column="56" selection-start-line="171" selection-start-column="56" selection-end-line="171" selection-end-column="56" />
+        <state relative-caret-position="127">
+          <caret line="137" column="51" lean-forward="true" selection-start-line="137" selection-start-column="51" selection-end-line="137" selection-end-column="51" />
           <folding>
             <element signature="e#59#69#0" expanded="true" />
-            <marker date="1526573562000" expanded="true" signature="4190:4605" ph="..." />
+            <marker date="1526845658000" expanded="true" signature="6973:7411" ph="..." />
           </folding>
         </state>
       </provider>
