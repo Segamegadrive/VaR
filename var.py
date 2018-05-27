@@ -132,19 +132,21 @@ def calcVar(funcCompanies, datapoints, investment):
             adjCloseFirstVal = firstVal[0]
         print "First old value in Adj Close Column: {} ".format(adjCloseFirstVal)
 
-    if (funcCompanies == parseAmazon()):
+    elif (funcCompanies == parseAmazon()):
         firstVal = parseAmazonAdjClose()
         for i in range(1, datapoints):
             firstVal = [float(i) for i in firstVal]
             adjCloseFirstVal = firstVal[0]
         print "First old value in Adj Close Column: {} ".format(adjCloseFirstVal)
 
-    if (funcCompanies == parseBitcoin()):
+    elif (funcCompanies == parseBitcoin()):
         firstVal = parseBitcoinAdjClose()
         for i in range(1, datapoints):
             firstVal = [float(i) for i in firstVal]
             adjCloseFirstVal = firstVal[0]
         print "First old value in Adj Close Column: {} ".format(adjCloseFirstVal)
+    else:
+        print("Please find companies")
 
     randomArray = []
     for r in range(1, datapoints + 1):
@@ -265,7 +267,7 @@ def calcVar(funcCompanies, datapoints, investment):
 
 
 
-calcVar(parseBitcoin(),20,1)
+calcVar(parseMicrosoft(),20,1)
 
 # calcMonte(parseMicrosoft(), parseMicrosoftAdjClose(), 10, 1)
 # parseAmazonAdjClose()
